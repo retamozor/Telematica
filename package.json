@@ -1,0 +1,30 @@
+{
+  "name": "telematica",
+  "version": "1.0.0",
+  "description": "Esta es una pagina web desarrollada con propósitos de aprendizaje, en la cual se implementa base de datos",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retamozor/Telematica.git"
+  },
+  "keywords": [
+    "telemática",
+    "base-de-datos"
+  ],
+  "author": "Uninorte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/retamozor/Telematica/issues"
+  },
+  "homepage": "https://github.com/retamozor/Telematica#readme",
+  "dependencies": {
+    "ejs-mate": "^3.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
