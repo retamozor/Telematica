@@ -1,0 +1,39 @@
+<%- include('templates/header') %>
+
+  <div class="content-body center">
+
+    <div class="card">
+      <div class="card-body">
+        <div class='logo'> <img src="/resource/icon.png" alt="logo" class="imagen">Telemática</div>
+        <div>Registrarse</div>
+        <div class="name-form">
+          <span>Nombre</span>
+          <input type="text" class="input" aria-label="Nombre">
+          <span>Apellido</span>
+          <input type="text" class="input" aria-label="Apellido">
+        </div>
+        <div>
+          <span>Cédula</span>
+          <input type="number" class="input" aria-label="Cédula">
+        </div>
+        <div class="email-form">
+          <span>Usuario</span>
+          <input type="email" class="input" autocomplete="username" aria-label="Usuario">
+        </div>
+        <div class="pass-form">
+          <span>Contraseña</span>
+          <input type="password" class="input" aria-label="Contraseña">
+        </div>
+        <div class="pass-form">
+          <span>Confirmación</span>
+          <input type="password" class="input" aria-label="Confirmación">
+        </div>
+        <div>
+          <button>Siguiente</button>
+        </div>
+      </div>
+    </div>
+
+  <script src="/js/index.js"></script>
+
+<%- include('templates/footer') %>

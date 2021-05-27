@@ -4,7 +4,7 @@ Instale las dependencias
 
 ## Node
 
-```r
+```bash
 npm i ejs-mate express
 npm i nodemon -D
 ```
