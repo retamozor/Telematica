@@ -1,25 +1,47 @@
-<%- include('templates/header') %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesion</title>
+  <%- include('templates/styles') %>
+</head>
 
-  <div class="content-body center">
 
-    <div class="card">
-      <div class="card-body">
-        <div class='logo'> <img src="/resource/icon.png" alt="logo" class="imagen">Telemática</div>
-        <div>Acceder</div>
-        <div class="email-form">
-          <span>Usuario</span>
-          <input type="email" class="input-e" autocomplete="username" aria-label="Usuario">
+<div class="center">
+
+  <div class="card">
+    <div class="card-body">
+
+      <a href="/"><img src="/resource/icon.png" alt="logo" class="imagen" ></a>
+      <h2>Iniciar sesion</h2>
+
+      <form action="/signup">
+
+        <div class="box">
+          <input class="form-input" type="text" autocomplete="username" name="user" id="user" placeholder=" "><br>
+          <label class="form-label" for="user">Usuario</label>
         </div>
-        <div class="pass-form">
-          <span>Contraseña</span>
-          <input type="password" class="input-pass" aria-label="Contraseña">
+
+        <div class="box">
+          <input class="form-input" type="password" name="password" id="pass" placeholder=" "><br>
+          <label class="form-label" for="pass">Contraseña</label>
         </div>
-        <div>
-          <button>Siguiente</button>
+
+        <div class="row">
+          <div class="box">
+            <a href="/signin">Registrarse</a>
+          </div>
+          <div class="box">
+            <input type="submit" value="Iniciar sesion">
+          </div>
         </div>
-      </div>
+
+      </form>
     </div>
+  </div>
+</div>
 
-  <script src="/js/index.js"></script>
 
 <%- include('templates/footer') %>

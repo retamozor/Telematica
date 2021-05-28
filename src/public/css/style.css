@@ -1,8 +1,8 @@
 :root {
   --header-pri: hsl(258, 78%, 49%);
   --header-sec: hsl(258, 78%, 38%);
-  --color-pri: hsl(258, 63%, 65%);
-  --color-sec: hsl(258, 63%, 55%);
+  --color-pri: hsl(258, 63%, 53%);
+  --color-sec: hsl(258, 63%, 45%);
   --fondo-pri: hsl(257, 28%, 80%);
   --fondo-sec: hsl(257, 28%, 60%);
   --button-pri: hsl(258, 76%, 32%);
@@ -26,7 +26,8 @@ body {
   font-family: 'M PLUS 1p', sans-serif;
   padding: 0;
   margin: 0;
-  background: var(--fondo-pri);
+  background: linear-gradient(90deg, hsla(20, 89%, 89%, 1) 0%, hsla(324, 57%, 77%, 1) 50%, hsla(278, 54%, 81%, 1) 100%);
+  height: 100vh;
 }
 
 .content-body {
@@ -38,6 +39,30 @@ body {
 .center {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.box {
+  flex-grow: 1;
+  margin-top: 1em;
+  position: relative;
+  height: 2em;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: .5em
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #B1FC03;
 }
 
 /* header style */
@@ -56,7 +81,7 @@ body {
   color: white;
   text-decoration: none;
   text-transform: uppercase;
-  user-select:none
+  user-select: none
 }
 
 header {
@@ -78,7 +103,7 @@ nav {
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 400ms ease-in-out 100ms;
-  user-select:none
+  user-select: none
 }
 
 nav ul {
@@ -131,7 +156,7 @@ nav a {
   height: 100%;
   display: flex;
   align-items: center;
-  user-select:none
+  user-select: none
 }
 
 .nav-toggle-label span,
@@ -165,28 +190,83 @@ nav a {
 .card {
   background: var(--color-pri);
   border: 2px solid var(--color-sec);
-  border-radius: 0.5em;
-  display: flex;
   margin: auto 0;
+  width: 100%;
+  height: 100%;
 }
+
 .card-body {
-  margin: 3em;
+  margin: 2em 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+/* form style */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
+.form-input {
+  outline: none;
+  border: 2px solid white;
+  border-radius: .5em;
+  position: absolute;
+  background: transparent;
+  padding-left: .5em;
+  height: 2em;
+  width: 100%;
+}
 
+input[type=submit] {
+  background: var(--button-pri);
+  border: 1px solid var(--button-sec);
+  border-radius: 0.5em;
+  height: 2em;
+  padding: 0 0.5em;
+  align-self: end;
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+}
 
-@media screen and (min-width: 957px) {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+h2 {
+  padding-bottom: 1em;
+}
+
+.form-label{
+  position: absolute;
+  top: .15em;
+  left: .5em;
+  font-size: 0.7em;
+  background: var(--color-pri);
+  color: white;
+  cursor: text;
+  transition: top 100ms ease-in,
+    left 150ms ease-in,
+    font-size 100ms ease-in;
+}
+
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown).form-input:not(:focus) ~.form-label {
+  top: -0.7em;
+  left: 1em;
+  font-size: 0.5em;
+}
+
+@media screen and (min-width: 500px) {
 
   /* header style */
   .nav-toggle-label {
@@ -195,7 +275,7 @@ input[type=number]::-webkit-outer-spin-button {
 
   header {
     display: grid;
-    grid-template-columns: 0.5fr auto minmax(400px, 2fr) 0.5fr;
+    grid-template-columns: 0.5fr auto minmax(200px, 2fr) 0.5fr;
   }
 
   .logo {
@@ -209,12 +289,12 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: flex-end;
     align-items: center;
   }
-  
+
   nav ul {
     display: flex;
     justify-content: flex-end;
   }
-  
+
   nav li {
     background: var(--button-pri);
     font-size: 0.75rem;
@@ -236,5 +316,12 @@ input[type=number]::-webkit-outer-spin-button {
   nav li:hover {
     background: var(--button-sec);
     box-shadow: inset 0 0 30px -15px rgb(33, 5, 36);
+  }
+
+  .card {
+    border-radius: 0.5em;
+    height: auto;
+    min-width: 400px;
+    max-width: 40%;
   }
 }

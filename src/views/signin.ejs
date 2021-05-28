@@ -1,39 +1,69 @@
-<%- include('templates/header') %>
+<!DOCTYPE html>
+<html lang="es">
 
-  <div class="content-body center">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrarse</title>
+  <%- include('templates/styles') %>
+</head>
+
+<body>
+
+  <div class="center">
 
     <div class="card">
       <div class="card-body">
-        <div class='logo'> <img src="/resource/icon.png" alt="logo" class="imagen">Telemática</div>
-        <div>Registrarse</div>
-        <div class="name-form">
-          <span>Nombre</span>
-          <input type="text" class="input" aria-label="Nombre">
-          <span>Apellido</span>
-          <input type="text" class="input" aria-label="Apellido">
-        </div>
-        <div>
-          <span>Cédula</span>
-          <input type="number" class="input" aria-label="Cédula">
-        </div>
-        <div class="email-form">
-          <span>Usuario</span>
-          <input type="email" class="input" autocomplete="username" aria-label="Usuario">
-        </div>
-        <div class="pass-form">
-          <span>Contraseña</span>
-          <input type="password" class="input" aria-label="Contraseña">
-        </div>
-        <div class="pass-form">
-          <span>Confirmación</span>
-          <input type="password" class="input" aria-label="Confirmación">
-        </div>
-        <div>
-          <button>Siguiente</button>
-        </div>
+
+        <a href="/"><img src="/resource/icon.png" alt="logo" class="imagen" ></a>
+        <h2>Registrarse</h2>
+
+        <form action="/signin">
+          <div class="row">
+            <div class="box">
+              <input class="form-input" type="text" name="name" id="name" placeholder=" "><br>
+              <label class="form-label" for="name">Nombre</label>
+            </div>
+  
+            <div class="box">
+              <input class="form-input" type="text" name="last-name" id="last-name" placeholder=" "><br>
+              <label class="form-label" for="last-name">Apellido</label>
+            </div>
+          </div>
+
+          <div class="box">
+            <input class="form-input" type="number" name="cedula" id="cedula" placeholder=" "><br>
+            <label class="form-label" for="cedula">Cédula</label>
+          </div>
+
+          <div class="box">
+            <input class="form-input" type="text" autocomplete="username" name="user" id="user" placeholder=" "><br>
+            <label class="form-label" for="user">Usuario</label>
+          </div>
+
+          <div class="box">
+            <input class="form-input" type="password" name="password" id="pass" placeholder=" "><br>
+            <label class="form-label" for="pass">Contraseña</label>
+          </div>
+
+          <div class="box">
+            <input class="form-input" type="password" name="pass-confirm" id="confirm" placeholder=" "><br>
+            <label class="form-label" for="confirm">Confirmación</label>
+          </div>
+
+          <div class="row">
+            <div class="box">
+              <a href="/signup">Iniciar sesion</a>
+            </div>
+            <div class="box">
+              <input type="submit" value="Registrarse">
+            </div>
+          </div>
+
+        </form>
       </div>
     </div>
+  </div>
 
-  <script src="/js/index.js"></script>
-
-<%- include('templates/footer') %>
+</body>
