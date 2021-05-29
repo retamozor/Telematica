@@ -27,6 +27,7 @@ router.get('/examen', (req, res) => {
 
 router.post('/examen', (req, res) => {
   console.log(req.body);
+  res.render('gracias')
 });
 
 module.exports = router

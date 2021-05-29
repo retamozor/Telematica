@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> Registro de examen</title>
     <%- include('templates/styles') %>
 </head>
     
@@ -14,31 +14,35 @@
     <div class="content-body center">
       <div class="panel">
         <h1>Registro de casos </h1>
-        <form action="gracias.html">
+        <form action="/examen" method="POST">
             <div class="box">
-                <input class ="form-input" type="text"id="apellido" placeholder=" ">
+                <input name="nombre" class ="form-input" type="text"id="apellido" placeholder=" ">
                 <label class="form-label" for="nombre">Nombre </label> 
             </div>
         
             <div class="box">
-                <input class ="form-input" type="number"id="cedula" placeholder=" "> 
+                <input name="cedula" class ="form-input" type="number"id="cedula" placeholder=" "> 
                 <label class="form-label"  for="cedula"> C&eacute;dula </label>
             </div>
            
             <div class="box">
-                <input class ="form-input" type="text"id="sexo" placeholder=" ">
+                <select name="sexo" class ="form-input" type="text"id="sexo"> 
+                 <option value="Masculino">Masculino</option>
+                 <option value="Femenino">Femenino</option>
+                 <option value="Otro">Otro</option>
+                </select>
                 <label class="form-label" for="sexo"> Sexo </label>
             </div>
             
         
             <div class="box">
-              <input  class="form-time" id ="nacimiento" type="date">
+              <input name="fecha_de_nacimiento" class="form-time" id ="nacimiento" type="date">
               <label class="form-label" for="nacimiento">  Fecha de nacimiento </label>
             </div>
         
         
             <div class="box">
-                <input class ="form-input" type="text"id="direccion de residencia"  placeholder=" ">
+                <input name="direccion_de_residencia" class ="form-input" type="text"id="direccion de residencia"  placeholder=" ">
                 <label class="form-label" for="direccion de residencia"> Direcci&oacute;n de residencia </label>
             </div>
         
@@ -48,23 +52,26 @@
             
         
             <div class="box">
-              <input class ="form-input" type="text"id="direccion de trabajo" placeholder=" ">
+              <input name="direccion_de_trabajo" class ="form-input" type="text"id="direccion de trabajo" placeholder=" ">
               <label class="form-label" for="direccion de trabajo" >Direcci&oacute;n de trabajo  </label>
             </div>
          
         
             <div class="box">
-                <input class ="form-input" type="text"id="resultado del examen" placeholder=" ">
+                <select name="resultado_del_examen" class ="form-input" type="text"id="resultado del examen">
+                    <option value="Positivo">Positivo</option>
+                    <option value="Positivo">Negativo</option>
+                </select>
                 <label class="form-label" for="resultado del examen"> Resultado del examen </label>
             </div>
         
             <div class="row">
                 <div class="box">
-                    <input class="form-time" id="fecha del examen" type="date">
+                    <input name="fecha_del_examen" class="form-time" id="fecha del examen" type="date">
                     <label class="form-label" for="fecha del examen" > Fecha del examen </label>
                 </div>
                 <div class="box">
-                    <input class="form-time" id="hora del examen" type="time">
+                    <input name="hora_del_examen" class="form-time" id="hora del examen" type="time">
                     <label class="form-label" for="hora del examen" > Hora del examen </label>
                 </div>
             </div>
@@ -72,7 +79,6 @@
             <input type="submit" value="registrar"></input>
         </form>
 
-      </div>
 
     </div>
     
