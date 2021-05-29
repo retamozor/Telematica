@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('templates/styles') %>
+</head>
+    
+
+<body>
+    <%- include('templates/header_1') %>
+    <div class="content-body">
+        <h1>Registro de casos </h1>
+        <form action="gracias.html">
+            <div class="box">
+                <input class ="form-input" type="text"id="apellido">
+                <label class="form-label" for="nombre">Nombre </label> 
+            </div>
+        
+            <div class="box">
+                <input class ="form-input" type="text"id="cedula"> 
+                <label class="form-label"  for="cedula"> C&eacute;dula </label>
+            </div>
+           
+            <div class="box">
+                <input class ="form-input" type="text"id="sexo">
+                <label class="form-label" for="sexo"> Sexo </label>
+            </div>
+            
+        
+            <div class="box">
+             <label for="nacimiento">  Fecha de nacimiento </label>
+             <input id ="nacimiento"type="date">
+            </div>
+        
+        
+            <div class="box">
+                <input class ="form-input" type="text"id="direccion de residencia" >
+                <label class="form-label" for="direccion de residencia"> Direcci&oacute;n de residencia </label>
+            </div>
+        
+        
+            <div class="box">
+             <label class="form-label" for="direccion de trabajo">Direcci&oacute;n de trabajo  </label>
+             <input class ="form-input" type="text"id="direccion de trabajo">
+            </div>
+         
+        
+            <div class="box">
+                <input class ="form-input" type="text"id="resultado del examen">
+                <label class="form-label" for="resultado del examen"> Resultado del examen </label>
+            </div>
+        
+        
+            <div class="box">
+             <label for="fecha del examen" > Fecha del examen </label>
+             <input id="fecha del examen" type="date">
+             <input type="time">
+            </div>
+        
+            <button>Enviar</button>
+        </form>
+
+
+    </div>
+    
+
+</body>
+</html>
