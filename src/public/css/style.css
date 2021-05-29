@@ -1,6 +1,6 @@
 :root {
-  --header-pri: hsl(217, 63%, 20%);
-  --header-sec: hsl(217, 63%, 10%);
+  --header-pri: hsl(207, 73%, 85%);
+  --header-sec: hsl(207, 73%, 75%);
   --color-pri: hsl(154, 100%, 95%);
   --color-sec: hsl(154, 100%, 80%);
   --azul-pri: hsl(199, 70%, 49%);
@@ -20,7 +20,8 @@
 
 html {
   font-size: 19px;
-  min-width: auto;
+  min-height: 100vh;
+  display: flex;
 }
 
 body {
@@ -28,7 +29,9 @@ body {
   padding: 0;
   margin: 0;
   background: var(--background);
-  height: 100vh;
+    min-height: 100vh;
+  user-select:none;
+  flex-grow: 1;
 }
 
 .content-body {
@@ -48,27 +51,20 @@ body {
   margin-top: 1em;
   position: relative;
   height: 2em;
-  width: 100%;
+  min-width: auto;
 }
 
 .row {
   display: flex;
-  gap: .5em
-}
-
-a {
-  color: var(--azul-pri);
-  text-decoration: none;
-}
-
-a:hover {
-  color: #B1FC03;
+  gap: .5em;
+  flex-wrap: wrap;
 }
 
 .panel {
   background: var(--color-pri);
-  width: 60%;
+  width: 100%;
   padding: 2em;
+  height: 100%;
 }
 
 /* header style */
@@ -84,7 +80,7 @@ a:hover {
   font-weight: bold;
   font-size: 1.22rem;
   letter-spacing: 0.22em;
-  color: white;
+  color: black;
   text-decoration: none;
   text-transform: uppercase;
   user-select: none
@@ -97,6 +93,16 @@ header {
   position: fixed;
   top: 0;
   width: 100%
+}
+
+header hr {
+  position: absolute;
+  top: 3.26rem;
+  background: black;
+  border: none;
+  color: black;
+  width: 100%;
+  height: 1px;
 }
 
 nav {
@@ -130,7 +136,7 @@ nav li:hover {
 }
 
 nav a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
@@ -169,7 +175,7 @@ nav a {
 .nav-toggle-label span::after,
 .nav-toggle-label span::before {
   display: block;
-  background: white;
+  background: black;
   height: 3px;
   width: 1.6em;
   border-radius: 3px;
@@ -195,10 +201,9 @@ nav a {
 
 .card {
   background: var(--color-pri);
-  border: 2px solid var(--color-sec);
   margin: auto 0;
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .card-body {
@@ -215,6 +220,15 @@ form {
   width: 100%;
 }
 
+form a {
+  color: var(--azul-pri);
+  text-decoration: none;
+}
+
+form a:hover {
+  color: #B1FC03;
+}
+
 .form-input {
   outline: none;
   border: 2px solid var(--azul-sec);
@@ -222,6 +236,7 @@ form {
   position: absolute;
   background: transparent;
   padding-left: .5em;
+  font-family: inherit;
   height: 2em;
   width: 100%;
 }
@@ -239,8 +254,9 @@ input[type=submit] {
 }
 
 .submit {
-  align-self: end;
-  width: auto;
+  flex-grow: 0;
+  justify-self: end;
+  min-width: auto;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -257,9 +273,9 @@ h2 {
   padding-bottom: 1em;
 }
 
-.form-label{
+.form-label {
   position: absolute;
-  top: .15em;
+  top: .2em;
   left: .5em;
   font-size: 0.7em;
   background: var(--color-pri);
@@ -276,6 +292,25 @@ h2 {
   left: 1em;
   font-size: 0.5em;
 }
+
+.form-time {
+  outline: none;
+  border: 2px solid var(--azul-sec);
+  border-radius: .5em;
+  position: absolute;
+  background: transparent;
+  padding-left: .5em;
+  height: 2em;
+  width: 100%;
+  font-family: inherit;
+}
+
+.form-time ~.form-label {
+  top: -0.7em;
+  left: 1em;
+  font-size: 0.5em;
+}
+
 
 @media screen and (min-width: 500px) {
 
@@ -330,9 +365,18 @@ h2 {
   }
 
   .card {
+    all: unset;
+    background: var(--color-pri);
+    border: 2px solid var(--color-sec);
+    margin: auto 0;
+    width: 100%;
     border-radius: 0.5em;
-    height: auto;
-    min-width: 400px;
+    min-width: 460px;
     max-width: 40%;
+  }
+
+  .panel {
+    width: 60%;
+    height: 100%;
   }
 }

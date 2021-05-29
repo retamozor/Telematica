@@ -21,7 +21,7 @@
             </div>
         
             <div class="box">
-                <input class ="form-input" type="text"id="cedula" placeholder=" "> 
+                <input class ="form-input" type="number"id="cedula" placeholder=" "> 
                 <label class="form-label"  for="cedula"> C&eacute;dula </label>
             </div>
            
@@ -32,8 +32,8 @@
             
         
             <div class="box">
-             <label for="nacimiento">  Fecha de nacimiento </label>
-             <input id ="nacimiento"type="date">
+              <input  class="form-time" id ="nacimiento" type="date">
+              <label class="form-label" for="nacimiento">  Fecha de nacimiento </label>
             </div>
         
         
@@ -54,14 +54,18 @@
                 <label class="form-label" for="resultado del examen"> Resultado del examen </label>
             </div>
         
-        
-            <div class="box">
-             <label for="fecha del examen" > Fecha del examen </label>
-             <input id="fecha del examen" type="date">
-             <input type="time">
+            <div class="row">
+                <div class="box">
+                    <input class="form-time" id="fecha del examen" type="date">
+                    <label class="form-label" for="fecha del examen" > Fecha del examen </label>
+                </div>
+                <div class="box">
+                    <input class="form-time" id="hora del examen" type="time">
+                    <label class="form-label" for="hora del examen" > Hora del examen </label>
+                </div>
             </div>
         
-            <input type="submit">Enviar</input>
+            <input type="submit" value="registrar"></input>
         </form>
 
       </div>

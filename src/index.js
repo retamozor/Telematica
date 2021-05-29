@@ -1,8 +1,8 @@
-const engine = require('ejs-mate');
-const express = require('express');
-const path = require('path');
+const express = require('express'),
+  engine = require('ejs-mate'),
+  path = require('path'),
+  app = express();
 
-const app = express();
 //  Ajustes  //
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // archivos publicos
 
 //  rutas  //
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 app.use(require('./routes'));
 
 // 404 handler  //

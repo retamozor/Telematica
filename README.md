@@ -5,7 +5,7 @@ Instale las dependencias
 ## Node
 
 ```bash
-npm i ejs-mate express pg
+npm i ejs-mate express pg jsonwebtoken
 npm i nodemon -D
 ```
 
