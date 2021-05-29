@@ -22,7 +22,9 @@
   "homepage": "https://github.com/retamozor/Telematica#readme",
   "dependencies": {
     "ejs-mate": "^3.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

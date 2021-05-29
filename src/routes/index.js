@@ -1,19 +1,32 @@
 const router = require('express').Router();
+const pool = require('../database/postgreSQL')
 
-router.get('/', (_req, res) => {
+router.get('/', (req, res) => {
   res.render('index')
 });
 
-router.get('/signup', (_req, res) => {
+router.get('/signup', (req, res) => {
   res.render('signup')
 });
 
-router.get('/signin', (_req, res) => {
+router.post('/signup/', (req, res) => {
+  console.log(req.body);
+});
+
+router.get('/signin', (req, res) => {
   res.render('signin')
 });
 
-router.get('/examen', (_req, res) => {
+router.post('/signin/', (req, res) => {
+  console.log(req.body);
+});
+
+router.get('/examen', (req, res) => {
   res.render('examen')
+});
+
+router.post('/examen', (req, res) => {
+  console.log(req.body);
 });
 
 module.exports = router

@@ -5,6 +5,18 @@ Instale las dependencias
 ## Node
 
 ```bash
-npm i ejs-mate express
+npm i ejs-mate express pg jsonwebtoken
 npm i nodemon -D
+```
+
+Ejecute el servidor de la siguiente manera
+
+```bash
+node src
+```
+
+Ejecute el servidor en modo de desarrollo de la siguiente manera
+
+```bash
+npm run test
 ```
