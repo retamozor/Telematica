@@ -11,6 +11,7 @@ app.set('port', process.env.port || 8080);
 app.use(express.static(path.join(__dirname, 'public'))); // archivos publicos
 
 //  rutas  //
+app.use(express.urlencoded({ extended: false }));
 app.use(require('./routes'));
 
 // 404 handler  //

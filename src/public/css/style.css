@@ -1,12 +1,13 @@
 :root {
-  --header-pri: hsl(258, 78%, 49%);
-  --header-sec: hsl(258, 78%, 38%);
-  --color-pri: hsl(258, 63%, 53%);
-  --color-sec: hsl(258, 63%, 45%);
-  --fondo-pri: hsl(257, 28%, 80%);
-  --fondo-sec: hsl(257, 28%, 60%);
+  --header-pri: hsl(217, 63%, 20%);
+  --header-sec: hsl(217, 63%, 10%);
+  --color-pri: hsl(154, 100%, 95%);
+  --color-sec: hsl(154, 100%, 80%);
+  --azul-pri: hsl(199, 70%, 49%);
+  --azul-sec: hsl(199, 70%, 40%);
   --button-pri: hsl(258, 76%, 32%);
   --button-sec: hsl(258, 76%, 22%);
+  --background: linear-gradient(90deg, hsl(217, 100%, 16%) 0%, hsl(186, 100%, 40%) 100%);
 }
 
 *,
@@ -26,14 +27,13 @@ body {
   font-family: 'M PLUS 1p', sans-serif;
   padding: 0;
   margin: 0;
-  background: linear-gradient(90deg, hsla(20, 89%, 89%, 1) 0%, hsla(324, 57%, 77%, 1) 50%, hsla(278, 54%, 81%, 1) 100%);
+  background: var(--background);
   height: 100vh;
 }
 
 .content-body {
   padding: 0;
-  padding-top: 1rem;
-  margin-top: 3.25rem;
+  padding-top: 3.25rem;
 }
 
 .center {
@@ -57,12 +57,18 @@ body {
 }
 
 a {
-  color: white;
+  color: var(--azul-pri);
   text-decoration: none;
 }
 
 a:hover {
   color: #B1FC03;
+}
+
+.panel {
+  background: var(--color-pri);
+  width: 60%;
+  padding: 2em;
 }
 
 /* header style */
@@ -211,7 +217,7 @@ form {
 
 .form-input {
   outline: none;
-  border: 2px solid white;
+  border: 2px solid var(--azul-sec);
   border-radius: .5em;
   position: absolute;
   background: transparent;
@@ -230,6 +236,11 @@ input[type=submit] {
   color: white;
   font-family: inherit;
   cursor: pointer;
+}
+
+.submit {
+  align-self: end;
+  width: auto;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -252,7 +263,7 @@ h2 {
   left: .5em;
   font-size: 0.7em;
   background: var(--color-pri);
-  color: white;
+  color: var(--azul-pri);
   cursor: text;
   transition: top 100ms ease-in,
     left 150ms ease-in,

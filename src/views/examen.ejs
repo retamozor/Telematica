@@ -11,21 +11,22 @@
 
 <body>
     <%- include('templates/header_1') %>
-    <div class="content-body">
+    <div class="content-body center">
+      <div class="panel">
         <h1>Registro de casos </h1>
         <form action="gracias.html">
             <div class="box">
-                <input class ="form-input" type="text"id="apellido">
+                <input class ="form-input" type="text"id="apellido" placeholder=" ">
                 <label class="form-label" for="nombre">Nombre </label> 
             </div>
         
             <div class="box">
-                <input class ="form-input" type="text"id="cedula"> 
+                <input class ="form-input" type="text"id="cedula" placeholder=" "> 
                 <label class="form-label"  for="cedula"> C&eacute;dula </label>
             </div>
            
             <div class="box">
-                <input class ="form-input" type="text"id="sexo">
+                <input class ="form-input" type="text"id="sexo" placeholder=" ">
                 <label class="form-label" for="sexo"> Sexo </label>
             </div>
             
@@ -37,19 +38,19 @@
         
         
             <div class="box">
-                <input class ="form-input" type="text"id="direccion de residencia" >
+                <input class ="form-input" type="text"id="direccion de residencia"  placeholder=" ">
                 <label class="form-label" for="direccion de residencia"> Direcci&oacute;n de residencia </label>
             </div>
         
         
             <div class="box">
-             <label class="form-label" for="direccion de trabajo">Direcci&oacute;n de trabajo  </label>
-             <input class ="form-input" type="text"id="direccion de trabajo">
+              <input class ="form-input" type="text"id="direccion de trabajo" placeholder=" ">
+              <label class="form-label" for="direccion de trabajo" >Direcci&oacute;n de trabajo  </label>
             </div>
          
         
             <div class="box">
-                <input class ="form-input" type="text"id="resultado del examen">
+                <input class ="form-input" type="text"id="resultado del examen" placeholder=" ">
                 <label class="form-label" for="resultado del examen"> Resultado del examen </label>
             </div>
         
@@ -60,9 +61,10 @@
              <input type="time">
             </div>
         
-            <button>Enviar</button>
+            <input type="submit">Enviar</input>
         </form>
 
+      </div>
 
     </div>
     
