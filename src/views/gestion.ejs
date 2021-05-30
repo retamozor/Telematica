@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de casos</title>
+    <%- include('templates/styles') %>
+</head>
+
+<body>
+    <%- include('templates/header_1') %>
+        <div class="content-body center">
+            <div class="panel">
+
+                <form action="/gestion" method="POST">
+
+
+
+                    <div class="box">
+                        <select name="tipo de dato" id="Busqueda de casos" type="text" class="form-input">
+                            <option value="N">Nombre</option>
+                            <option value="I">Id</option>
+                            <option value="C">Cedula</option>
+                        </select>
+                        <label class="form-label"> tipo de Busqueda </label>
+                    </div>
+
+                    <div class="box">
+                        <input type="text" name="Busqueda" class="form-input">
+
+
+                        <label class="form-label" for="">Busqueda de casos </label>
+                    </div>
+                    <div class="box">
+                        <input type="submit" value="buscar"> </input>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+</body>
+
+</html>

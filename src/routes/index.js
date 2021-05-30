@@ -30,4 +30,12 @@ router.post('/examen', (req, res) => {
   res.render('gracias')
 });
 
+router.get('/gestion', (req, res) => {
+  res.render('gestion')
+});
+
+router.post('/gestion', (req, res) => {
+  console.log(req.body);
+});
+
 module.exports = router
