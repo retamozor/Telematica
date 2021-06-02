@@ -10,33 +10,110 @@
 </head>
 
 <body>
-    <%- include('templates/header_1') %>
+    <% if(role=='Admin') {%>
+      <%- include('templates/header_admin') %>
+    <% } else { %>
+      <%- include('templates/header_1') %>
+    <% } %>
         <div class="content-body center">
             <div class="panel">
-
+                <h1>Gestión de casos</h1>
                 <form action="/gestion" method="POST">
 
-
-
                     <div class="box">
-                        <select name="tipo de dato" id="Busqueda de casos" type="text" class="form-input">
-                            <option value="N">Nombre</option>
-                            <option value="I">Id</option>
-                            <option value="C">Cedula</option>
+                        <select name="type" id="Busqueda de casos" type="text" class="form-input">
+                            <option value="nombre">Nombre</option>
+                            <option value="id">Id</option>
+                            <option value="cedula">Cedula</option>
                         </select>
                         <label class="form-label"> tipo de Busqueda </label>
                     </div>
 
                     <div class="box">
-                        <input type="text" name="Busqueda" class="form-input">
-
-
-                        <label class="form-label" for="">Busqueda de casos </label>
+                        <input type="text" name="busqueda" id="search" class="form-input" placeholder=" ">
+                        <label class="form-label" for="search">Busqueda de casos </label>
                     </div>
+
                     <div class="box">
                         <input type="submit" value="buscar"> </input>
                     </div>
                 </form>
+
+                <table >
+                  <tr>
+                      <th colspan="3">ID</th>
+                      <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.id%>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">Nombre</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.nombre%>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">Cédula</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.cedula %>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">Sexo</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.sexo %>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">fecha de nacimiento</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.nacimiento %>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">dir. residencia</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.residencia %>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">dir. trabajo</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.trabajo %>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">Resultado</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.examen %>
+                        <% });%>
+                      </td>
+                  </tr>
+                  <tr> 
+                    <th colspan="3">Fecha del examen</th>
+                    <td>
+                        <% resultado.forEach(r=> { %>
+                          <%= r.fecha %>
+                        <% });%>
+                      </td>
+                  </tr>
+              </table>
+
             </div>
         </div>
 

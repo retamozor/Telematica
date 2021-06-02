@@ -1,7 +1,8 @@
 const express = require('express'),
   engine = require('ejs-mate'),
   path = require('path'),
-  app = express();
+  app = express(),
+  session = require('express-session');
 
 //  Ajustes  //
 app.engine('ejs', engine);
@@ -13,6 +14,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // archivos publicos
 //  rutas  //
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
+app.use(session({secret: '123456', resave: true, saveUninitialized: true}))
 app.use(require('./routes'));
 
 // 404 handler  //

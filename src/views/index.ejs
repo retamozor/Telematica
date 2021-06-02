@@ -10,7 +10,11 @@
 </head>
 
 <body>
-  <%- include('templates/header_1') %>
+  <% if(role) {%>
+    <%- include('templates/header_admin') %>
+  <% } else { %>
+    <%- include('templates/header_1') %>
+  <% } %>
 
     <div class="content-body">
       <h1>Lorem ipsum dolor sit.</h1>

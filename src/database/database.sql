@@ -1,17 +1,15 @@
 CREATE DATABASE casoscovid;
 \c casoscovid
 
+CREATE EXTENSION pgcrypto;
+
 CREATE TABLE userdata (
-  id SERIAL NOT NULL PRIMARY KEY,
+  cedula INT NOT NULL PRIMARY KEY,
   nombre VARCHAR(40) NOT NULL,
   apellido VARCHAR(40) NOT NULL,
-  rol VARCHAR(40) NOT NULL
-);
-
-CREATE TABLE passwords (
-  username VARCHAR(50) NOT NULL PRIMARY KEY,
-  pass VARCHAR(255) NOT NULL,
-  user_id INT REFERENCES userdata (id) NOT NULL
+  rol VARCHAR(40) NOT NULL,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  pass VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE examen (
@@ -24,4 +22,10 @@ CREATE TABLE examen (
   trabajo VARCHAR(100),
   examen VARCHAR(1) NOT NULL,
   fecha TIMESTAMP NOT NULL
+);
+
+CREATE TABLE caso (
+  id_caso INT REFERENCES examen (id) NOT NULL,
+  estado VARCHAR(30) NOT NULL,
+  creado TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

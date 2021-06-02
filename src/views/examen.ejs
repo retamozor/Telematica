@@ -11,7 +11,11 @@
 
 
 <body>
-  <%- include('templates/header_1') %>
+  <% if(role=='Admin') {%>
+    <%- include('templates/header_admin') %>
+  <% } else { %>
+    <%- include('templates/header_1') %>
+  <% } %>
     <div class="content-body center">
       <div class="panel">
         <h1>Registro de casos </h1>

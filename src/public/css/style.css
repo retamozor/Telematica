@@ -3,8 +3,8 @@
   --header-sec: hsl(207, 73%, 75%);
   --color-pri: hsl(154, 100%, 95%);
   --color-sec: hsl(154, 100%, 80%);
-  --azul-pri: hsl(199, 70%, 49%);
-  --azul-sec: hsl(199, 70%, 40%);
+  --azul-pri: hsl(195, 100%, 45%);
+  --azul-sec: hsl(195, 100%, 33%);
   --button-pri: hsl(258, 76%, 32%);
   --button-sec: hsl(258, 76%, 22%);
   --background: linear-gradient(90deg, hsl(217, 100%, 16%) 0%, hsl(186, 100%, 40%) 100%);
@@ -213,6 +213,12 @@ nav a {
   align-items: center;
 }
 
+.card-body p {
+  font-size: 13px;
+  color: #d92626;
+  font-weight: bolder;
+}
+
 /* form style */
 form {
   display: flex;
@@ -231,21 +237,29 @@ form a:hover {
 
 .form-input {
   outline: none;
-  border: 2px solid var(--azul-sec);
+  border: 2px solid var(--azul-pri);
   border-radius: .5em;
   position: absolute;
   background: transparent;
   padding-left: .5em;
   font-family: inherit;
-  height: 2em;
+  height: 2.5em;
   width: 100%;
+}
+
+.form-input:focus {
+  border: 2px solid var(--azul-sec);
+}
+
+.form-input:focus ~.form-label {
+  color: var(--azul-sec);
 }
 
 input[type=submit] {
   background: var(--button-pri);
   border: 1px solid var(--button-sec);
   border-radius: 0.5em;
-  height: 2em;
+  height: 2.5em;
   padding: 0 0.5em;
   align-self: end;
   color: white;
@@ -275,11 +289,12 @@ h2 {
 
 .form-label {
   position: absolute;
-  top: .2em;
+  top: .15em;
   left: .5em;
-  font-size: 0.7em;
+  font-size: 1em;
   background: var(--color-pri);
   color: var(--azul-pri);
+  font-weight: bold;
   cursor: text;
   transition: top 100ms ease-in,
     left 150ms ease-in,
@@ -290,7 +305,7 @@ h2 {
 .form-input:not(:placeholder-shown).form-input:not(:focus) ~.form-label {
   top: -0.7em;
   left: 1em;
-  font-size: 0.5em;
+  font-size: 0.7em;
 }
 
 .form-time {
@@ -312,7 +327,7 @@ h2 {
 }
 
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 1000px) {
 
   /* header style */
   .nav-toggle-label {
@@ -321,7 +336,7 @@ h2 {
 
   header {
     display: grid;
-    grid-template-columns: 0.5fr auto minmax(200px, 2fr) 0.5fr;
+    grid-template-columns: 0.2fr auto minmax(650px, 2fr) 0.2fr;
   }
 
   .logo {
@@ -376,7 +391,13 @@ h2 {
   }
 
   .panel {
-    width: 60%;
+    width: 80%;
     height: 100%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  html {
+    font-size: 15px;
   }
 }

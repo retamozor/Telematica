@@ -1,0 +1,29 @@
+<header>
+  <a class='logo' href="/"> <img src="/resource/icon.png" alt="logo" class="imagen">Telemática</a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <nav>
+    <% if(role == 'Admin' || role == 'Medico') { %>
+      <ul>
+        <li><a href="/gestion">Gestion</a></li>
+      </ul>
+    <% } %>
+    <% if(role == 'Admin' || role == 'Ayudante') { %>
+    <ul>
+      <li><a href="/examen">Examen</a></li>
+    </ul>
+    <% } %>
+    <% if(role == 'Admin') { %>
+      <ul>
+        <li><a href="/signup">Registrar</a></li>
+      </ul>
+    <% } %>
+    <ul>
+      <li><a href="/logout">Salir</a></li>
+    </ul>
+    
+  </nav>
+  <label for="nav-toggle" class="nav-toggle-label">
+    <span></span>
+  </label>
+  <hr>
+</header>
