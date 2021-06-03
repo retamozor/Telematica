@@ -34,7 +34,6 @@ router.post('/signin',
       });
     } else {
       req.session.role = req.body.rol
-      console.log(req.body);
       res.redirect('/');
     }
   });
@@ -176,5 +175,10 @@ router.post('/gestion', async (req, res) => {
   } else res.status(401).redirect('/')
 
 });
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(null);
+  res.redirect('/')
+})
 
 module.exports = router
