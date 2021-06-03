@@ -116,6 +116,29 @@ result.set('+',"Positivo"); %>
                       </td>
                   </tr>
               </table>
+              
+              <form class ="form-input"action="/gestion">
+                <div class="box" >
+                  <select name="estado" id="estado">
+                    <option value="tratamiento en casa">Tratamiento en casa</option>
+                    <option value="tratamiento en hospital">Tratamiento en hospital</option>
+                    <option value="en uci">En UCI</option>
+                    <option value="curado">Curado</option>
+                    <option value="muerte">Muerte</option>
+                  </select>
+                  <label class="form-label" for="estado">Estado del usuario</label>
+                </div>
+
+                <div  class="box" > 
+                  <input placeholder=" " class ="form-input"type="text" id="id1" name="ID">
+                  <label for="id1"></label>
+                </div>
+                <div class="box">
+                  <input type="submit" name="submit" value="estado">
+                </div>
+                
+            </form>
+
 
             </div>
         </div>
