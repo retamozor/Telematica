@@ -11,7 +11,7 @@
 
 
 <body>
-  <% if(role=='Admin') {%>
+  <% if(role) {%>
     <%- include('templates/header_admin') %>
   <% } else { %>
     <%- include('templates/header_1') %>

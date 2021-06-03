@@ -8,7 +8,11 @@
     <%- include('templates/styles') %>
 </head>
 <body>
+  <% if(role) {%>
+    <%- include('templates/header_admin') %>
+  <% } else { %>
     <%- include('templates/header_1') %>
+  <% } %>
     <div class="content-body">
         <h1>Gracias por colaborar</h1>
     </div>

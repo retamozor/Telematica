@@ -6,11 +6,15 @@ const {
 } = require('express-validator');
 
 router.get('/', (req, res) => {
-  res.render('index', {role: req.session.role})
+  res.render('index', {
+    role: req.session.role
+  })
 });
 
 router.get('/signin', (req, res) => {
-  if(!req.session.role) res.render('signin', { errors: []})
+  if (!req.session.role) res.render('signin', {
+    errors: []
+  })
   else res.redirect('/')
 });
 
@@ -104,7 +108,9 @@ router.post('/signup',
 );
 
 router.get('/examen', (req, res) => {
-  if (req.session.role == 'Ayudante' || req.session.role == 'Admin') res.render('examen',{role: req.session.role})
+  if (req.session.role == 'Ayudante' || req.session.role == 'Admin') res.render('examen', {
+    role: req.session.role
+  })
   else res.status(401).redirect('/')
 });
 
@@ -121,7 +127,7 @@ router.post('/examen', async (req, res) => {
       fecha_del_examen
     } = req.body;
 
-    const response = await pool.query('INSERT INTO examen (nombre, cedula, sexo, nacimiento, residencia, trabajo, examen, fecha) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+    await pool.query('INSERT INTO examen (nombre, cedula, sexo, nacimiento, residencia, trabajo, examen, fecha) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
       [nombre,
         cedula,
         sexo,
@@ -131,7 +137,7 @@ router.post('/examen', async (req, res) => {
         resultado_del_examen,
         fecha_del_examen
       ])
-    res.render('gracias')
+    res.render('gracias',{role:req.session.role})
   } else res.status(401).redirect('/')
 
 });
@@ -150,28 +156,43 @@ router.post('/gestion', async (req, res) => {
     console.log(req.body);
     const {
       type,
-      busqueda
+      busqueda,
+      ID,
+      estado,
+      submit
     } = req.body;
-    let response = undefined
-    switch (type) {
-      case 'id':
-        response = await pool.query('SELECT * FROM examen WHERE id = $1;', [busqueda])
-        break;
-      case 'nombre':
-        response = await pool.query('SELECT * FROM examen WHERE nombre = $1;', [busqueda])
-        break;
-      case 'cedula':
-        response = await pool.query('SELECT * FROM examen WHERE cedula = $1;', [busqueda])
+    switch (submit) {
+      case 'buscar':
+
+        let response = undefined
+        switch (type) {
+          case 'id':
+            response = await pool.query('SELECT * FROM examen WHERE id = $1;', [busqueda])
+            break;
+          case 'nombre':
+            response = await pool.query('SELECT * FROM examen WHERE nombre = $1;', [busqueda])
+            break;
+          case 'cedula':
+            response = await pool.query('SELECT * FROM examen WHERE cedula = $1;', [busqueda])
+            break;
+        }
+        res.render('gestion', {
+          resultado: response.rows,
+          role: req.session.role
+        })
         break;
 
-      default:
+      case 'estado':
+        await pool.query('INSERT INTO caso (id_caso, estado) VALUES ($1, $2)', [ID, estado])
+        res.render('gestion', {
+          resultado: [],
+          role: req.session.role
+        })
         break;
     }
 
-    res.render('gestion', {
-      resultado: response.rows,
-      role: req.session.role
-    })
+
+    
   } else res.status(401).redirect('/')
 
 });

@@ -13,7 +13,7 @@ result.set('+',"Positivo"); %>
 </head>
 
 <body>
-    <% if(role=='Admin') {%>
+    <% if(role) {%>
       <%- include('templates/header_admin') %>
     <% } else { %>
       <%- include('templates/header_1') %>
@@ -117,7 +117,7 @@ result.set('+',"Positivo"); %>
                   </tr>
               </table>
               
-              <form action="/gestion">
+              <form action="/gestion" method="POST">
                 <div class="box" >
                   <select name="estado" id="estado" class="form-input">
                     <option value="tratamiento en casa">Tratamiento en casa</option>
@@ -131,7 +131,7 @@ result.set('+',"Positivo"); %>
 
                 <div  class="box" > 
                   <input placeholder=" " class ="form-input"type="text" id="id1" name="ID">
-                  <label for="id1"></label>
+                  <label for="id1" class="form-label">Id del Paciente</label>
                 </div>
                 <div class="box">
                   <input type="submit" name="submit" value="estado">
