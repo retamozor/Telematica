@@ -1,3 +1,5 @@
+const { error404 } = require('./controllers/index.conrtoller');
+
 const express = require('express'),
   engine = require('ejs-mate'),
   path = require('path'),
@@ -18,9 +20,7 @@ app.use(session({secret: 'Hty956H#dsj?', resave: true, saveUninitialized: true})
 app.use(require('./routes'));
 
 // 404 handler  //
-app.use((req, res) => {
-  res.status(404).render('404');
-});
+app.use(error404);
 
 //  servidor http  //
 const servidor = app.listen(app.get('port'), () => {

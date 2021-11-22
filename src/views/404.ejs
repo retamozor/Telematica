@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagina No Encontrada</title>
+  <title>Telemática</title>
+  <%- include('templates/styles') %>
 </head>
+
 <body>
-  Error 404
+  <% if(role) {%>
+    <%- include('templates/header_admin') %>
+  <% } else { %>
+    <%- include('templates/header_1') %>
+  <% } %>
+
+    <div class="content-body center">
+      <div class="panel">
+        <h1>Pagina no encontrada</h1>
+        <p>Error 404</p>
+        
+      </div>
+    </div>
+    <script src="/js/index.js"></script>
+
 </body>
+
 </html>
