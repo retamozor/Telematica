@@ -4,7 +4,8 @@
   "description": "Esta es una pagina web desarrollada con propósitos de aprendizaje, en la cual se implementa base de datos",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon src"
+    "test": "nodemon src",
+    "start": "cross-env PORT=80 NODE_ENV=production node src"
   },
   "repository": {
     "type": "git",
@@ -21,15 +22,20 @@
   },
   "homepage": "https://github.com/retamozor/Telematica#readme",
   "dependencies": {
+    "connect-pg-simple": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "express-validator": "^6.11.1",
+    "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "snyk": "^1.769.0"
   }
 }

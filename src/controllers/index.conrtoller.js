@@ -5,12 +5,20 @@ const {
 
 
 const getIndex = (req, res) => {
-  res.render('index', {
-    role: req.session.role
-  });
+  res.render('home/index')
+};
+
+const getAyudante = (req, res) => {
+  res.render('home/ayudante', {
+    name: req.session.name,
+    last_name: req.session.last_name,
+    cc: req.session.cedula,
+    rol: req.session.role
+  })
 };
 
 const getSignin = (req, res) => {
+  console.log(req.body);
   if (!req.session.role) res.render('sesion/signin', {
     errors: []
   })
@@ -25,7 +33,6 @@ const postSignin = (req, res) => {
         {errors: errors.array()}
       );
   
-  req.session.role = req.body.rol
   res.redirect('/');  
 }
 
@@ -67,7 +74,7 @@ const postSignup = async (req, res) => {
           '${last_name}',
           '${rol}',
           '${user}',
-          crypt(${password}, gen_salt(\'bf\')) )`
+          crypt('${password}', gen_salt(\'bf\')) )`
       )
 
     console.log(`Usuario ${user} creado`);
@@ -172,7 +179,7 @@ const postGestion = async (req, res) => {
           WHERE
             c.sexo=s.id
             AND c.examen=r.id
-            AND c.id = '${busqueda}'';`
+            AND c.id = '${busqueda}';`
           )
         break;
       case 'nombre':
@@ -271,6 +278,7 @@ const error404 = (req, res) => {
 
 module.exports = {
   getIndex,
+  getAyudante,
   getSignin,
   postSignin,
   getSignup,

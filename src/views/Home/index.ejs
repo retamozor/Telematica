@@ -1,0 +1,31 @@
+<%- include('../templates/header') %>
+
+<body class="home-grid">
+  <div class="content">
+    <h1 class="main-title">AbiEps</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit odio iusto culpa, voluptates minus libero velit iure. Itaque officia est ipsa ipsam voluptatum neque recusandae ex fugit? Ad, similique pariatur.</p>
+  </div>
+  <div class="card card-grid">
+    <div class="profile">
+      <div class="profile-circle" alt="">
+        <img class="avatar" src="/resource/profile.svg" alt="">
+      </div>
+    </div>
+    <form class="form-grid" action="/signin" method="post">
+      <h2 class="title">Sign Up to begin doing wonderful stuff</h2>
+      <div class="box">
+        <input type="text" autocomplete="username" name="user" id="user" placeholder=" " class="form-input">
+        <label for="user" class="form-label">User</label>
+      </div>
+      <div class="box">
+        <input type="password" name="password" id="pass" placeholder=" " class="form-input">
+        <label for="pass" class="form-label">Password</label>
+      </div>
+      <div class="box end">
+        <input type="submit" value="Sign in">
+      </div>
+    </form>
+  </div>
+  <div class="circle"></div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const {
   getIndex,
+  getAyudante,
   getSignin,
   postSignin,
   getSignup,
@@ -12,6 +13,7 @@ const {
   postRegistro,
   postActualizarCaso
 } = require('../controllers/index.conrtoller');
+const {is_auth, is_ayud} = require('../controllers/middlewares');
 const {
   validate_user,
   validate_pass_length,
@@ -22,7 +24,10 @@ const {
   validate_id
 } = require('../controllers/validators');
 
-router.get('/', getIndex);
+
+router.get('/', is_auth, getIndex);
+
+router.get('/', is_ayud, getAyudante);
 
 router.get('/signin', getSignin);
 

@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TELEMÁTICA</title>
+  <title>AbiEps</title>
   <%- include('templates/styles') %>
 </head>
 
 <body>
   <% if(role) {%>
-    <%- include('templates/header_admin') %>
+    <%- include('templates/header_logged') %>
   <% } else { %>
     <%- include('templates/header_1') %>
   <% } %>

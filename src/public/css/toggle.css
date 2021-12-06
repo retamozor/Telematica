@@ -1,0 +1,86 @@
+.profile-bg {
+  height: 13.4rem;
+  width: 13.4rem;
+  top: -7.5rem;
+  left: -5.3rem;
+  z-index: unset;
+}
+
+.profile-bg > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.img-user {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.hide {
+  display: none;
+}
+
+.user-info {
+  position: absolute;
+  bottom: 1.4rem;
+  right: 3.5rem;
+  display: grid;
+  justify-items: center;
+  gap: 1em;
+}
+
+.hide > h3 {
+  font-family: Fugaz One;
+  font-size: 2.4rem;
+  text-align: center;
+  letter-spacing: 0.21em;
+  color: white;
+  padding: 0;
+}
+
+.hide > h3 + p {
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.085em;
+  color: white;
+}
+
+.hide > p + p {
+  font-size: 0.86rem;
+  text-align: center;
+  letter-spacing: 0.085em;
+  color: white;
+}
+
+.hide > * {
+  margin: 0;
+}
+
+.toggle {
+  display: none;
+}
+
+.toggle:checked~.profile-bg {
+  height: 60rem;
+  width: 51.4rem;
+  top: -21rem;
+  left: -25.7rem;
+  z-index: unset;
+}
+
+.toggle:checked~.profile-bg .img-user {
+  width: 10.2rem;
+  height: 10.2rem;
+}
+
+.toggle:checked~.profile-bg .user-info {
+  left: 31rem;
+  bottom: 14.5rem;
+}
+
+.toggle:checked~.profile-bg .hide {
+  display: grid;
+  gap: 1em;
+  justify-items: center;
+}

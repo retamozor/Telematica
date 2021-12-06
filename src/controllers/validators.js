@@ -6,20 +6,26 @@ const {
 const validate_user = body('user').custom(async (user, {req}) => {
   const response = await pool.query(`
     SELECT
-      r.rol
+      r.rol,
+      u.nombre,
+      u.apellido,
+      u.cedula
     FROM
       hospital.rol r,
       hospital.userdata u
     WHERE 
       u.rol=r.id
       AND u.username='${user}'
-      AND u.pass = crypt( '${req.body.password}', pass);`
+      AND u.pass = crypt( '${req.body.password}', u.pass);`
     )
-
   if (response.rows.length == 0) throw new Error('Usuario y/ó contraseña incorectos');
 
-  req.body.rol = response.rows[0].rol;
-
+  req.session.role = response.rows[0].rol;
+  req.session.name = response.rows[0].nombre;
+  req.session.last_name = response.rows[0].apellido;
+  req.session.cedula = response.rows[0].cedula;
+  
+  
   return true
 })
 
@@ -66,6 +72,7 @@ const validate_estado = body('estado').custom(async (estado, { req }) => {
     WHERE
       id='${req.body.ID}'`
   )
+  if (result.rowCount == 0) return true
 
   if (result.rows[0].examen == 2) throw new Error('El paciente no tiene COVID')
 
@@ -87,8 +94,7 @@ const validate_estado = body('estado').custom(async (estado, { req }) => {
           WHERE e2.creado > e1.creado
       )`
   )
-
-  if (lastEstado.rows.estado == 'Muerte') throw new Error('El paciente ya murió')
+  if (lastEstado.rows[0].estado == 'Muerte') throw new Error('El paciente ya murió')
 
   return true
 })

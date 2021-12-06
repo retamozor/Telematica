@@ -1,0 +1,81 @@
+<%- include('../templates/header') %>
+<title>AbiEps</title>
+</head>
+<body class="helper-grid">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/js/load.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/index.api.js"></script>
+  <script src="/js/index.js"></script>
+  
+  <h1 class="main-title">AbiEps</h1>
+  <div class="rows search-continer">
+    
+    <p class="search-ico"></p>
+    <input name="busqueda" type="text" class="search" id="enter" placeholder="Buscar caso">
+    <select name="type" class="search-type">
+      <option value="nombre">Nombre</option>
+      <option value="id">Id</option>
+      <option value="cedula">Cedula</option>
+    </select>
+    <button id="agregar">+</button>
+  </div>
+  <div class="card close" id="info">
+    <div class="rows">
+      <div>
+        <div class="profile-circle small" alt="">
+          <img class="avatar" src="/resource/woman.svg" alt="">
+        </div>
+      </div>
+      <div>
+        <h3>Nombre apellido</h3>
+        <p class="info">cc.</p>
+        <div class="rows">
+          <p class="info">id:</p>
+          <p class="info">sex:</p>
+        </div>
+      </div>
+    </div>
+    <p class="info">Born:</p>
+    <p class="info">Apartment:</p>
+    <p class="info">Work:</p>
+    <p class="info">Result:</p>
+    <p class="info">Created:</p>
+    <form action="/actualizar-caso" method="POST">
+      <div class="box">
+        <select name="estado" id="estado" class="form-input">
+          <option value="1">Tratamiento en casa</option>
+          <option value="2">Tratamiento en hospital</option>
+          <option value="3">En UCI</option>
+          <option value="4">Curado</option>
+          <option value="5">Muerte</option>
+        </select>
+        <label class="form-label bg-white" for="estado">Estado del usuario</label>
+      </div>
+      <div class="box">
+        <input type="submit" name="submit" value="actualizar">
+      </div>
+    </form>
+    <button class="close_btn" id="close"></button>
+  </div>
+  <div class="content-scroll cols"></div>
+  <div class="content-overlay"></div>
+  <input type="checkbox" id="toggle" class="toggle">
+  <div class="circle profile-bg">
+    <div>
+      <div class="user-info">
+        <label for="toggle" class="toggle-label">
+          <img class="img-user" src="/resource/ayudante.svg" alt="">
+        </label>
+        <div class="hide">
+          <h3><%= rol %></h3>
+          <p class="info"><%= name %> <%= last_name %></p>
+          <p class="info">CC. <%= cc %></p>
+          <a href="/logout">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

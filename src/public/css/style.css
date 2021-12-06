@@ -62,9 +62,15 @@ body {
 
 .panel {
   background: var(--color-pri);
+  box-shadow: 0 0 5em -2em black;
   width: 100%;
   padding: 2em;
   height: 100%;
+}
+
+.avatar {
+  width: 2.25em;
+  height: 2.25em;
 }
 
 /* header style */
@@ -219,6 +225,16 @@ nav a {
   font-weight: bolder;
 }
 
+/* Card form style */
+
+.card-form {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 1em 0 gray;
+  padding: 2em;
+  margin: 2em 0 3em 0;
+}
+
 /* form style */
 form {
   display: flex;
@@ -255,7 +271,7 @@ form a:hover {
   color: var(--azul-sec);
 }
 
-input[type=submit] {
+input[type=submit], .submit-button {
   background: var(--button-pri);
   border: 1px solid var(--button-sec);
   border-radius: 0.5em;
@@ -324,6 +340,53 @@ h2 {
   top: -0.7em;
   left: 1em;
   font-size: 0.5em;
+}
+
+.bg-white {
+  background: white;
+}
+
+.form-row {
+  flex-direction: row;
+  width: 100%;
+}
+
+.form-row > .box{
+  flex: 1 1 100%;
+}
+.form-row > .box + .box{
+  margin-left: 1em;
+}
+
+.box.select{
+  flex: 1 1 20%;
+}
+
+.box.button{
+  flex: 1 1 0%;
+}
+/* Icon */
+
+.search {
+  position: relative;
+  background: var(--button-pri);
+  box-shadow: 0 0 0 0.2em white;
+  border-radius: 100%;
+  width: 0.6em;
+  height: 0.6em;
+  margin: 0.1em;
+  margin-right: 0.3em;
+}
+.search::after {
+  content: '';
+  position: absolute;
+  margin-left: 0.4em;
+  margin-top: 0.4em;
+  background: white;
+  transform: rotate(-45deg);
+  border-radius: 0.1em;
+  width: 0.3em;
+  height: 0.7em;
 }
 
 

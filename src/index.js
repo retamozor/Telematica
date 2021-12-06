@@ -1,28 +1,46 @@
-const { error404 } = require('./controllers/index.conrtoller');
+require('dotenv').config()
 
 const express = require('express'),
   engine = require('ejs-mate'),
   path = require('path'),
   app = express(),
-  session = require('express-session');
+  session = require('express-session'),
+  pgPool = require('./database/postgreSQL'),
+  pgSession = require('connect-pg-simple')(session),
+  { error404 } = require('./controllers/index.conrtoller');
+  
+  //  Ajustes  //
+  app.engine('ejs', engine);
+  app.set('view engine', 'ejs');
+  app.set('views', path.join(__dirname, 'views'));
+  app.set('port', process.env.PORT || 8080);
+  app.use(express.static(path.join(__dirname, 'public'))); // archivos publicos
 
-//  Ajustes  //
-app.engine('ejs', engine);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.set('port', process.env.port || 8080);
-app.use(express.static(path.join(__dirname, 'public'))); // archivos publicos
-
-//  rutas  //
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
-app.use(session({secret: 'Hty956H#dsj?', resave: true, saveUninitialized: true}))
-app.use(require('./routes'));
+  // middleware //
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json())
+  app.use(session({
+    secret: process.env.SESSION_KY,
+    name:'sessionID', resave: true,
+    saveUninitialized: true,
+    rolling:true,
+    store: new pgSession({
+      pool: pgPool,
+      tableName: 'user_session',
+      schemaName: 'hospital'
+    }),
+    cookie: {
+      maxAge: 10*60*1000
+    }
+  }))
+  //  rutas  //
+  app.use(require('./routes'));
+  app.use('/api', require('./routes/api'))
 
 // 404 handler  //
 app.use(error404);
 
 //  servidor http  //
 const servidor = app.listen(app.get('port'), () => {
-  console.log(`server on port: ${app.get('port')}`);
+  console.log(`server on port: ${app.get('port')} in ${app.get('env')}`);
 });

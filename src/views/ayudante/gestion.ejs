@@ -1,140 +1,146 @@
-<% let result = new Map();
-result.set('-',"Negativo");
-result.set('+',"Positivo"); %>
-<!DOCTYPE html>
-<html lang="es">
+<% let result=new Map(); result.set('-',"Negativo"); result.set('+',"Positivo"); %>
+  <!DOCTYPE html>
+  <html lang="es">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion de casos</title>
     <%- include('../templates/styles') %>
-</head>
+  </head>
 
-<body>
-    <% if(role) {%>
-      <%- include('../templates/header_admin') %>
-    <% } else { %>
-      <%- include('../templates/header_1') %>
-    <% } %>
-        <div class="content-body center">
-            <div class="panel">
-              <h1>Gestión de casos</h1>
-              <form action="/gestion" method="POST">
+  <body>
+    <%- include('../templates/header_logged') %>
+      <div class="content-body center">
+        <div class="panel">
+          <h1>Gestión de casos</h1>
+          <div class="card-form">
+            <form class="form-row" action="/gestion" method="POST" id="gestion">
 
-                  <div class="box">
-                      <select name="type" id="Busqueda de casos" type="text" class="form-input">
-                          <option value="nombre">Nombre</option>
-                          <option value="id">Id</option>
-                          <option value="cedula">Cedula</option>
-                      </select>
-                      <label class="form-label"> tipo de Busqueda </label>
-                  </div>
+              <div class="box select">
+                <select name="type" id="Busqueda de casos" type="text" class="form-input">
+                  <option value="nombre">Nombre</option>
+                  <option value="id">Id</option>
+                  <option value="cedula">Cedula</option>
+                </select>
+                <label class="form-label bg-white"> tipo de Busqueda </label>
+              </div>
 
-                  <div class="box">
-                      <input type="text" name="busqueda" id="search" class="form-input" placeholder=" ">
-                      <label class="form-label" for="search">Busqueda de casos </label>
-                  </div>
+              <div class="box">
+                <input type="text" name="busqueda" id="search" class="form-input" placeholder=" ">
+                <label class="form-label bg-white" for="search">Busqueda de casos </label>
+              </div>
 
-                  <div class="box">
-                      <input type="submit" name="submit" value="buscar"> </input>
-                  </div>
-              </form>
-
-              <% errors.forEach(error=> { %>
-                <p class="error"><%= error.msg %></p>
-              <% }); %>
-
-              <form action="/actualizar-caso" method="POST">
-                <div class="box" >
-                  <select name="estado" id="estado" class="form-input">
-                    <option value="1">Tratamiento en casa</option>
-                    <option value="2">Tratamiento en hospital</option>
-                    <option value="3">En UCI</option>
-                    <option value="4">Curado</option>
-                    <option value="5">Muerte</option>
-                  </select>
-                  <label class="form-label" for="estado">Estado del usuario</label>
-                </div>
-
-                <div  class="box" > 
-                  <input placeholder=" " class ="form-input" type="number" min="1" id="id1" name="ID">
-                  <label for="id1" class="form-label">Id del Paciente</label>
-                </div>
-                <div class="box">
-                  <input type="submit" name="submit" value="actualizar">
-                </div>
-                
+              <div class="box button">
+                <!-- <input type="submit" name="submit" value="buscar"> </input> -->
+                <button id="buscar" class="submit-button">
+                  <p class="search"></p>
+                </button>
+              </div>
             </form>
+          </div>
 
-            <% resultado.forEach(r=> { %>
-              <table >
-                <tr>
-                    <th colspan="3">ID</th>
-                    <td>
+          <% errors.forEach(error=> { %>
+            <p class="error">
+              <%= error.msg %>
+            </p>
+            <% }); %>
+
+              <div class="card-form">
+                <form class="form-row" action="/actualizar-caso" method="POST">
+                  <div class="box">
+                    <select name="estado" id="estado" class="form-input">
+                      <option value="1">Tratamiento en casa</option>
+                      <option value="2">Tratamiento en hospital</option>
+                      <option value="3">En UCI</option>
+                      <option value="4">Curado</option>
+                      <option value="5">Muerte</option>
+                    </select>
+                    <label class="form-label bg-white" for="estado">Estado del usuario</label>
+                  </div>
+
+                  <div class="box">
+                    <input placeholder=" " class="form-input" type="number" min="1" id="id1" name="ID">
+                    <label for="id1" class="form-label bg-white">Id del Paciente</label>
+                  </div>
+                  <div class="box">
+                    <input type="submit" name="submit" value="actualizar">
+                  </div>
+
+                </form>
+              </div>
+
+              <div class="card-form">
+                <!-- <% resultado.forEach(r=> { %>
+                  <table>
+                    <tr>
+                      <th colspan="3">ID</th>
+                      <td>
                         <%= r.id%>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">Nombre</th>
-                  <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">Nombre</th>
+                      <td>
                         <%= r.nombre%>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">Cédula</th>
-                  <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">Cédula</th>
+                      <td>
                         <%= r.cedula %>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">Sexo</th>
-                  <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">Sexo</th>
+                      <td>
                         <%= r.sexo %>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">fecha de nacimiento</th>
-                  <td>
-                        <%= r.nacimiento %>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">dir. residencia</th>
-                  <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">fecha de nacimiento</th>
+                      <td>
+                        <%=r.nacimiento.toLocaleString('es-Co') %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">dir. residencia</th>
+                      <td>
                         <%= r.residencia %>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">dir. trabajo</th>
-                  <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">dir. trabajo</th>
+                      <td>
                         <%= r.trabajo %>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">Resultado</th>
-                  <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">Resultado</th>
+                      <td>
                         <%= r.examen %>
-                    </td>
-                </tr>
-                <tr> 
-                  <th colspan="3">Fecha del examen</th>
-                  <td>
-                        <%= r.fecha %>
-                    </td>
-                </tr>
-            </table>
-            <hr>
-            <% });%>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3">Fecha del examen</th>
+                      <td>
+                        <%= r.fecha.toLocaleString('es-Co') %>
+                      </td>
+                    </tr>
+                  </table>
+                  <hr>
+                  <% });%> -->
+                <img class="avatar" src="resourse/woman-svgrepo-com" alt="" srcset="">
+              </div>
 
 
 
-            </div>
         </div>
+      </div>
 
 
 
-</body>
+  </body>
 
 </html>

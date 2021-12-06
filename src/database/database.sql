@@ -4,6 +4,7 @@ CREATE DATABASE casoscovid;
 CREATE EXTENSION pgcrypto;
 
 CREATE SCHEMA hospital;
+SET search_path TO hospital,public;
 
 CREATE TABLE IF NOT EXISTS hospital.rol (
   id INT NOT NULL PRIMARY KEY,
@@ -93,3 +94,15 @@ INSERT INTO hospital.id_estado (id, estado)
 
 INSERT INTO hospital.id_estado (id, estado) 
   VALUES ('5', 'Muerte');
+
+
+CREATE TABLE "hospital"."user_session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "hospital"."user_session" ADD CONSTRAINT "user_session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "hospital"."user_session" ("expire");

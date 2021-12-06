@@ -1,0 +1,498 @@
+:root {
+  --primary-600: hsl(349, 76%, 52%);
+  --primary-100: hsl(25, 100%, 87%);
+ --neutral-200: hsl(0, 0%, 77%);
+ --neutral-300: hsl(0, 0%, 50%);
+ --neutral-400: hsl(0, 0%, 35%);
+ --neutral-500: hsl(0, 0%, 30%);
+ --bg-color:hsl(266, 100%, 90%);
+ --bg-color-tr: hsla(266, 100%, 90%, 0);
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  scrollbar-color: var(--neutral-300) transparent;
+  scrollbar-width: thin;
+  user-select: none;
+}
+
+body {
+  background: var(--bg-color);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.21em;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 2em;
+  padding: 0 2em 0 2em;
+}
+
+.helper-grid {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  height: 100vh;
+  position: relative;
+  gap: 1em;
+}
+
+.helper-grid > h1 {
+  grid-row: 1 / 2;
+  max-width: max-content;
+  color: white;
+  background: var(--primary-600);
+  justify-self: end;
+  margin: 1rem;
+}
+
+.helper-grid > .card, .content-scroll > .card {
+  border-radius: 1em;
+  margin: 0 2em;
+  padding: 2em;
+}
+
+.helper-grid > .card {
+  grid-row: 3 / 4;
+  height: fit-content;
+}
+
+.content {
+  grid-row: 1 / 2;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-scroll {
+  grid-row: 4 / 5;
+  padding: 2em 0 ;
+  height: 100%;
+  width: 100%;
+  min-width: 27rem;
+  overflow-y: scroll;
+  scrollbar-color: var(--neutral-300) transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.content-overlay {
+  pointer-events: none;
+  grid-row: 4 / 5;
+  height: 100.5%;
+  width: 100%;
+  min-width: 27rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-color) 0%,
+    var(--bg-color-tr) 12%,
+    var(--bg-color-tr) 88%,
+    var(--bg-color) 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.main-title {
+  font-size: 2.3em;
+  font-family: Fugaz One;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.105em;
+  background: var(--primary-100);
+  color: var(--primary-600);
+  text-align: center;
+  border-radius: 0.5em;
+  min-width: 16.7rem;
+  align-self: end;
+}
+
+p {
+  color: white;
+  margin: 1.4em 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.27em;
+  margin-right: 5em;
+}
+
+a {
+  text-decoration: none;
+  background: var(--primary-100);
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  color: #000;
+  width: fit-content;
+}
+
+.box {
+  flex-grow: 1;
+  position: relative;
+  height: 2em;
+  min-width: auto;
+}
+
+.card {
+  background: var(--primary-100);
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 4em;
+  padding: 1.4em 4em;
+}
+
+.card p {
+  color: var(--neutral-300);
+  margin: .27em;
+}
+
+.card form {
+  margin-top: 1em;
+}
+
+.card-grid {
+  display: grid;
+  grid-row: 2 / 3;
+  grid-template-rows: 1fr 1.5fr;
+}
+
+.profile {
+  grid-row: 1 / 2;
+  width: 100%;
+  margin: auto;
+}
+
+.profile-circle {
+  width: 9em;
+  height: 9em;
+  margin: auto;
+  background: var(--neutral-200);
+  border-radius: 100%;
+  left: 6.5%;
+  bottom: 0;
+  position: relative;
+  margin-top: 1.35em;
+}
+.small {
+  width: 5em;
+  height: 5em;
+  margin: 0 1em;
+}
+.avatar {
+  position: absolute;
+  height: 115%;
+  bottom: 0;
+  left: -7.5%;
+}
+
+.circle {
+  position: absolute;
+  height: 63.7rem;
+  width: 63.7rem;
+  background: url(/resource/fondo.png), var(--primary-600);
+  background-blend-mode: soft-light, normal;
+  background-size: 30em;
+  box-shadow: inset 0px 4px 50px rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  top: -20rem;
+  right: 10vw;
+  z-index: -1;
+}
+
+.rows {
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+  width: 100%;
+  gap: 1em;
+  position: relative;
+}
+
+.virus {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2em;
+  height: 2em;
+}
+
+.cols {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  width: 100%;
+  gap: 1em;
+}
+
+.search-continer {
+  position: relative;
+  grid-row: 2 / 3;
+  gap:0;
+}
+
+.search {
+  background: white;
+  border-radius: 1.35em 0 0 1.35em;
+  outline: none;
+  border: 0;
+  height: 2.7em;
+  width: 100%;
+  margin-left: 2em;
+  padding: 0 3em;
+  color: var(--neutral-400);
+  font-family: inherit;
+}
+
+.search-type {
+  margin-right: 2em;
+  background: white;
+  border-radius: 0 1.35em 1.35em 0;
+  outline: none;
+  border: 0;
+  height: 2.7em;
+  color: var(--neutral-400);
+  font-family: inherit;
+}
+
+p.search-ico {
+  position: absolute;
+  background: inherit;
+  /* box-shadow: 0 0 0 0.1em var(--neutral-300); */
+  border: 0.13333em solid var(--neutral-400);;
+  border-radius: 100%;
+  width: 1em;
+  height: 1em;
+  left: 2.5083em;
+  bottom: 0.7333em;
+  margin: 0;
+  padding: 0;
+}
+p.search-ico::after {
+  content: '';
+  position: absolute;
+  background: var(--neutral-400);;
+  transform: rotate(-45deg);
+  border-radius: 0.1em;
+  width: 0.2em;
+  height: 0.7em;
+  bottom: -0.5em;
+  left: 0.8em;
+  margin: 0;
+}
+
+.info {
+  color: var(--neutral-500);
+  letter-spacing: 0.08em;
+  padding: 0.15em 0;
+}
+
+.close {
+  position: relative;
+}
+
+.close_btn {
+  all: unset;
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  top:0;
+  right: 0;
+}
+
+.close_btn::after {
+  position: absolute;
+  content: '';
+  background: var(--neutral-400);
+  width: 1em;
+  height: 2px;
+  border-radius: 1px;
+  transform: rotate(-45deg);
+  top: 1em;
+  right: 0.5em;
+}
+.close_btn::before {
+  position: absolute;
+  content: '';
+  background: var(--neutral-400);
+  width: 1em;
+  height: 2px;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  top: 1em;
+  right: 0.5em;
+}
+
+
+/* form style */
+form {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-grid {
+  grid-row: 2 / 3;
+}
+
+.form-input {
+  outline: none;
+  border: 2px solid var(--neutral-300);
+  border-radius: .6em;
+  position: absolute;
+  background: transparent;
+  padding-left: .5em;
+  font-family: inherit;
+  color: var(--neutral-300);
+  height: 2.5em;
+  width: 100%;
+}
+
+.form-input:focus {
+  border: 2px solid var(--neutral-400);
+}
+
+.form-input:focus ~.form-label {
+  color: var(--neutral-400);
+  font-size: 0.8em;
+}
+
+.end {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+input[type=submit], .submit-button {
+  background: var(--primary-600);
+  border: 0;
+  border-radius: 0.6em;
+  height: 2.5em;
+  padding: 0 0.5em;
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+  
+}
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+h2 {
+  font-size: 1.133em;
+  color: var(--neutral-300);
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.333em;
+  text-align: right;
+  letter-spacing: 0.3em;
+}
+
+h3 {
+  font-family: Fugaz One;
+  font-size: 1rem;
+  line-height: 1.47em;
+  letter-spacing: 0.21em;
+  padding-right: 2em;
+  color: var(--neutral-500);
+
+}
+
+.form-label {
+  position: absolute;
+  top: .5em;
+  left: .7rem;
+  font-size: 1em;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0.21em;
+  background: var(--primary-100);
+  color: var(--neutral-300);
+  cursor: text;
+  transition: top 100ms ease-in,
+    left 150ms ease-in,
+    font-size 100ms ease-in;
+}
+
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown).form-input:not(:focus) ~.form-label {
+  top: -0.7em;
+  left: .7rem;
+  font-size: 0.7em;
+}
+
+.form-time {
+  outline: none;
+  border: 2px solid var(--neutral-300);
+  color: var(--neutral-300);
+  border-radius: .5em;
+  position: absolute;
+  background: transparent;
+  padding-left: .5em;
+  height: 2.5em;
+  width: 100%;
+  font-family: inherit;
+  margin: 0;
+}
+
+.form-time ~.form-label {
+  top: -0.7em;
+  left: .7rem;
+  font-size: 0.7em;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+button {
+  background: var(--primary-600);
+  font-family: Fugaz One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2em;
+  line-height: .7em;
+  border: none;
+  padding: 0 .5em;
+  border-radius: 1em;
+  color: white;
+  margin-right: 2rem;
+}
