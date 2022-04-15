@@ -6,28 +6,24 @@ const {
   postSignin,
   getSignup,
   postSignup,
-  getGestion,
-  postGestion,
   getLogout,
-  getRegistro,
-  postRegistro,
-  postActualizarCaso
+  getAdmin
 } = require('../controllers/index.conrtoller');
-const {is_auth, is_ayud} = require('../controllers/middlewares');
+const {is_auth, is_ayud, is_admin} = require('../controllers/middlewares');
 const {
   validate_user,
   validate_pass_length,
   validate_pass_conf,
   validate_unique_user,
-  validate_cedula,
-  validate_estado,
-  validate_id
+  validate_cedula
 } = require('../controllers/validators');
 
 
 router.get('/', is_auth, getIndex);
 
 router.get('/', is_ayud, getAyudante);
+
+router.get('/', is_admin, getAdmin);
 
 router.get('/signin', getSignin);
 
@@ -39,16 +35,6 @@ router.post('/signup',
   validate_pass_length, validate_pass_conf, validate_unique_user, validate_cedula,
   postSignup
 );
-
-router.get('/registro', getRegistro);
-
-router.post('/registro', postRegistro);
-
-router.get('/gestion', getGestion);
-
-router.post('/gestion', postGestion);
-
-router.post('/actualizar-caso', validate_id, validate_estado, postActualizarCaso)
 
 router.get('/logout', getLogout)
 

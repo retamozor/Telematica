@@ -1,11 +1,12 @@
-
 const load = async () => {
-  let res = await fetch('/api/resume');
-  let json = await res.json();
+  if (content_scroll != undefined) {
+    let res = await fetch('/api/resume');
+    let json = await res.json();
   
-  json.forEach(caso => {
-    content_scroll.innerHTML += create_card(caso);
-  });
+    json.forEach(caso => {
+      content_scroll.innerHTML += create_card(caso);
+    });
+  }
 }
 
 const getById = async id => {
@@ -16,13 +17,13 @@ const getById = async id => {
     let json = await res.json();
     return json
   } catch (error) {
-    if (status=401) {
+    if (status = 401) {
       alert('sin autorizaacion')
       location.reload()
-    }else alert('La id debe se un numero')
+    } else alert('La id debe se un numero')
     return []
   }
-  
+
 }
 
 const getByName = async name => {
@@ -33,13 +34,13 @@ const getByName = async name => {
     let json = await res.json();
     return json
   } catch (error) {
-    if (status=401) {
+    if (status = 401) {
       alert('sin autorizaacion')
       location.reload()
-    }else alert('La id debe se un numero')
+    } else alert('La id debe se un numero')
     return []
   }
-  
+
 }
 
 const getByCedula = async cedula => {
@@ -50,10 +51,10 @@ const getByCedula = async cedula => {
     let json = await res.json();
     return json
   } catch (error) {
-    if (status=401) {
+    if (status = 401) {
       alert('sin autorizaacion')
       location.reload()
-    }else alert('La cedula debe se un numero')
+    } else alert('La cedula debe se un numero')
     return []
   }
 }
@@ -64,21 +65,21 @@ const postBody = async (url, data) => {
   let json = JSON.stringify(object);
   return await fetch(url, {
     method: 'POST',
-    body: json, 
-    headers:{
+    body: json,
+    headers: {
       'Content-Type': 'application/json'
     }
   })
 }
 
 const alertErrors = async res => {
-  if(res.status == 401) {
+  if (res.status == 401) {
     alert('sin autorizaacion')
     location.reload()
-  }else{
+  } else {
     let errors = await res.json()
     let msg = '';
-    errors.forEach( e => {
+    errors.forEach(e => {
       msg += e.msg + '\n';
     })
     alert(`error: ${msg}`)
@@ -91,7 +92,7 @@ const createCaso = async e => {
   let res = await postBody('/api/registro', data)
 
   console.log(res.ok);
-  if(res.ok) alert('Caso creado')
+  if (res.ok) alert('Caso creado')
   else {
     alertErrors(res)
   }
@@ -99,13 +100,22 @@ const createCaso = async e => {
 
 const updateState = async e => {
   let data = e.formData
-  data.append("ID",document.getElementById('id').innerText.slice(4))
+  data.append("ID", document.getElementById('id').innerText.slice(4))
 
   let res = await postBody('/api/update-case', data)
 
-  if(res.ok) alert('Caso actualizado')
+  if (res.ok) alert('Caso actualizado')
   else {
     alertErrors(res)
   }
 }
 
+const createUser = async e => {
+  let data = e.formData
+  let res = await postBody('/api/signup', data)
+
+  if (res.ok) alert('Usuario creado')
+  else {
+    alertErrors(res)
+  }
+}

@@ -17,6 +17,15 @@ const getAyudante = (req, res) => {
   })
 };
 
+const getAdmin = (req, res) => {
+  res.render('home/admin', {
+    name: req.session.name,
+    last_name: req.session.last_name,
+    cc: req.session.cedula,
+    rol: req.session.role
+  })
+};
+
 const getSignin = (req, res) => {
   console.log(req.body);
   if (!req.session.role) res.render('sesion/signin', {
@@ -279,6 +288,7 @@ const error404 = (req, res) => {
 module.exports = {
   getIndex,
   getAyudante,
+  getAdmin,
   getSignin,
   postSignin,
   getSignup,

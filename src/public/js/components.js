@@ -1,6 +1,6 @@
 // components //
 const create_card = caso => {
-  return `<div class="card" onclick="showInfo(${caso.id})">
+  return `<div class="card hover" onclick="showInfo(${caso.id})">
     <div class="rows">
       <div>
         <div class="profile-circle small" alt="">
@@ -41,7 +41,7 @@ const set_info = data => {
     <p class="info">trabajo: ${data.trabajo} </p>
     <p class="info">Resultado: ${data.examen} </p>
     <p class="info">Realizado ${timeago.format(data.fecha, 'es_ES')}</p>
-    <form action="/actualizar-caso" method="POST" id="form">
+    <form id="form">
       <div class="box">
         <select name="estado" id="estado" class="form-input">
           <option value="1">Tratamiento en casa</option>
@@ -53,7 +53,7 @@ const set_info = data => {
         <label class="form-label bg-white" for="estado">Estado del usuario</label>
       </div>
       <div class="box">
-        <input type="submit" name="submit" value="actualizar">
+        <input class="hover" type="submit" name="submit" value="actualizar">
       </div>
     </form>
     <button class="close_btn" id="close"></button>`
@@ -61,13 +61,12 @@ const set_info = data => {
   let form = document.getElementById('form');
   form.onsubmit = preventSubmit;
   form.onformdata = updateState;
-  
 }
 
 const set_form = () => {
   info.hidden = false
   info.innerHTML = `
-  <form action="/api/registro" method="POST" id="form">
+  <form id="form">
     <div class="box">
       <input name="nombre" class="form-input" type="text" id="apellido" placeholder=" ">
       <label class="form-label" for="nombre">Nombre </label>
@@ -121,7 +120,7 @@ const set_form = () => {
       <label class="form-label" for="hora del examen"> Hora del examen </label>
     </div>
 
-    <input type="submit" value="registrar"></input>
+    <input class="hover" type="submit" value="registrar"></input>
   </form>
   <button class="close_btn" id="close"></button>`
   document.getElementById('close').onclick = close;

@@ -18,7 +18,7 @@
       <option value="id">Id</option>
       <option value="cedula">Cedula</option>
     </select>
-    <button id="agregar">+</button>
+    <button class="hover" id="agregar">+</button>
   </div>
   <div class="card close" id="info">
     <div class="rows">
@@ -62,17 +62,15 @@
   <div class="content-overlay"></div>
   <input type="checkbox" id="toggle" class="toggle">
   <div class="circle profile-bg">
-    <div>
-      <div class="user-info">
-        <label for="toggle" class="toggle-label">
-          <img class="img-user" src="/resource/ayudante.svg" alt="">
-        </label>
-        <div class="hide">
-          <h3><%= rol %></h3>
-          <p class="info"><%= name %> <%= last_name %></p>
-          <p class="info">CC. <%= cc %></p>
-          <a href="/logout">Sign out</a>
-        </div>
+    <div class="user-info">
+      <label for="toggle" class="toggle-label">
+        <img class="img-user" src="/resource/ayudante.svg" alt="">
+      </label>
+      <div class="hide">
+        <h3><%= rol %></h3>
+        <p class="info"><%= name %> <%= last_name %></p>
+        <p class="info">CC. <%= cc %></p>
+        <a class="hover" href="/logout">Sign out</a>
       </div>
     </div>
   </div>

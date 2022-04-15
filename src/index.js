@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const express = require('express'),
-  engine = require('ejs-mate'),
   path = require('path'),
   app = express(),
   session = require('express-session'),
@@ -10,7 +9,6 @@ const express = require('express'),
   { error404 } = require('./controllers/index.conrtoller');
   
   //  Ajustes  //
-  app.engine('ejs', engine);
   app.set('view engine', 'ejs');
   app.set('views', path.join(__dirname, 'views'));
   app.set('port', process.env.PORT || 8080);

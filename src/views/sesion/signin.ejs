@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('../templates/header') %>
   <title>Iniciar sesion</title>
-  <%- include('../templates/styles') %>
 </head>
 
 <body>
 
   <div class="center">
 
-    <div class="card">
+    <div class="card prueba">
       <div class="card-body">
 
-        <a href="/"><img src="/resource/virus-svgrepo-com.svg" alt="logo" class="imagen"></a>
+        <a href="/">
+          <div class="profile">
+            <div class="profile-circle" alt="">
+              <img class="avatar" src="/resource/profile.svg" alt="">
+            </div>
+          </div>
+        </a>
         <h2>Iniciar sesion</h2>
 
         <% errors.forEach(error=> { %>

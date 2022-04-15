@@ -1,13 +1,14 @@
 :root {
   --primary-600: hsl(349, 76%, 52%);
   --primary-100: hsl(25, 100%, 87%);
- --neutral-200: hsl(0, 0%, 77%);
- --neutral-300: hsl(0, 0%, 50%);
- --neutral-400: hsl(0, 0%, 35%);
- --neutral-500: hsl(0, 0%, 30%);
- --bg-color:hsl(266, 100%, 90%);
- --bg-color-tr: hsla(266, 100%, 90%, 0);
-
+  --neutral-200: hsl(0, 0%, 77%);
+  --neutral-300: hsl(0, 0%, 50%);
+  --neutral-400: hsl(0, 0%, 35%);
+  --neutral-500: hsl(0, 0%, 30%);
+  --bg-color: hsl(266, 100%, 90%);
+  --bg-color-tr: hsla(266, 100%, 90%, 0);
+  --time: 400ms;
+  --delay: 250ms;
 }
 
 *,
@@ -39,6 +40,14 @@ body {
   padding: 0 2em 0 2em;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ========================= Ayudante ============================ */
 .helper-grid {
   display: grid;
   grid-template-rows: auto auto auto 1fr;
@@ -47,7 +56,7 @@ body {
   gap: 1em;
 }
 
-.helper-grid > h1 {
+.helper-grid>h1 {
   grid-row: 1 / 2;
   max-width: max-content;
   color: white;
@@ -56,15 +65,46 @@ body {
   margin: 1rem;
 }
 
-.helper-grid > .card, .content-scroll > .card {
+.helper-grid>.card,
+.content-scroll>.card {
   border-radius: 1em;
   margin: 0 2em;
   padding: 2em;
 }
 
-.helper-grid > .card {
+.helper-grid>.card {
   grid-row: 3 / 4;
   height: fit-content;
+}
+
+/* ========================== Admin ========================= */
+
+.admin-grid {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 2em;
+}
+
+.admin-grid>h1 {
+  grid-row: 1 / 2;
+  max-width: max-content;
+  color: white;
+  background: var(--primary-600);
+  justify-self: end;
+  margin: 1rem;
+}
+
+.admin-grid h2 {
+  text-align: center;
+}
+
+.admin-grid .card {
+  padding: 2em;
+  margin: 2em;
+}
+
+.admin-grid .profile-circle {
+  left: auto;
 }
 
 .content {
@@ -76,7 +116,7 @@ body {
 
 .content-scroll {
   grid-row: 4 / 5;
-  padding: 2em 0 ;
+  padding: 2em 0;
   height: 100%;
   width: 100%;
   min-width: 27rem;
@@ -95,12 +135,11 @@ body {
   height: 100.5%;
   width: 100%;
   min-width: 27rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-color) 0%,
-    var(--bg-color-tr) 12%,
-    var(--bg-color-tr) 88%,
-    var(--bg-color) 100%);
+  background: linear-gradient(180deg,
+      var(--bg-color) 0%,
+      var(--bg-color-tr) 10%,
+      var(--bg-color-tr) 90%,
+      var(--bg-color) 100%);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -150,9 +189,20 @@ a {
 
 .card {
   background: var(--primary-100);
-  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 4em;
   padding: 1.4em 4em;
+}
+
+.card-body {
+  margin: 2em 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prueba {
+  margin: auto 0;
 }
 
 .card p {
@@ -187,11 +237,13 @@ a {
   position: relative;
   margin-top: 1.35em;
 }
+
 .small {
   width: 5em;
   height: 5em;
   margin: 0 1em;
 }
+
 .avatar {
   position: absolute;
   height: 115%;
@@ -200,7 +252,7 @@ a {
 }
 
 .circle {
-  position: absolute;
+  position: fixed;
   height: 63.7rem;
   width: 63.7rem;
   background: url(/resource/fondo.png), var(--primary-600);
@@ -211,6 +263,12 @@ a {
   top: -20rem;
   right: 10vw;
   z-index: -1;
+}
+
+.row {
+  display: flex;
+  gap: 2ch;
+  flex-wrap: wrap;
 }
 
 .rows {
@@ -241,7 +299,7 @@ a {
 .search-continer {
   position: relative;
   grid-row: 2 / 3;
-  gap:0;
+  gap: 0;
 }
 
 .search {
@@ -271,8 +329,7 @@ a {
 p.search-ico {
   position: absolute;
   background: inherit;
-  /* box-shadow: 0 0 0 0.1em var(--neutral-300); */
-  border: 0.13333em solid var(--neutral-400);;
+  border: 0.13333em solid var(--neutral-400);
   border-radius: 100%;
   width: 1em;
   height: 1em;
@@ -281,10 +338,11 @@ p.search-ico {
   margin: 0;
   padding: 0;
 }
+
 p.search-ico::after {
   content: '';
   position: absolute;
-  background: var(--neutral-400);;
+  background: var(--neutral-400);
   transform: rotate(-45deg);
   border-radius: 0.1em;
   width: 0.2em;
@@ -300,44 +358,33 @@ p.search-ico::after {
   padding: 0.15em 0;
 }
 
-.close {
-  position: relative;
+h2 {
+  font-size: 1.133em;
+  color: var(--neutral-300);
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.333em;
+  text-align: right;
+  letter-spacing: 0.3em;
 }
 
-.close_btn {
-  all: unset;
-  position: absolute;
-  width: 2em;
-  height: 2em;
-  top:0;
-  right: 0;
+h3 {
+  font-family: Fugaz One;
+  font-size: 1rem;
+  line-height: 1.47em;
+  letter-spacing: 0.21em;
+  padding-right: 2em;
+  color: var(--neutral-500);
+
 }
 
-.close_btn::after {
-  position: absolute;
-  content: '';
-  background: var(--neutral-400);
-  width: 1em;
-  height: 2px;
-  border-radius: 1px;
-  transform: rotate(-45deg);
-  top: 1em;
-  right: 0.5em;
-}
-.close_btn::before {
-  position: absolute;
-  content: '';
-  background: var(--neutral-400);
-  width: 1em;
-  height: 2px;
-  border-radius: 1px;
-  transform: rotate(45deg);
-  top: 1em;
-  right: 0.5em;
+.end {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
-
-/* form style */
+/* ================================ form style ========================== */
 form {
   display: flex;
   gap: 1em;
@@ -366,18 +413,13 @@ form {
   border: 2px solid var(--neutral-400);
 }
 
-.form-input:focus ~.form-label {
+.form-input:focus~.form-label {
   color: var(--neutral-400);
   font-size: 0.8em;
 }
 
-.end {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-}
-
-input[type=submit], .submit-button {
+input[type=submit],
+.submit-button {
   background: var(--primary-600);
   border: 0;
   border-radius: 0.6em;
@@ -386,10 +428,7 @@ input[type=submit], .submit-button {
   color: white;
   font-family: inherit;
   cursor: pointer;
-  
 }
-
-
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -399,26 +438,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
-}
-
-h2 {
-  font-size: 1.133em;
-  color: var(--neutral-300);
-  font-style: normal;
-  font-weight: bold;
-  line-height: 1.333em;
-  text-align: right;
-  letter-spacing: 0.3em;
-}
-
-h3 {
-  font-family: Fugaz One;
-  font-size: 1rem;
-  line-height: 1.47em;
-  letter-spacing: 0.21em;
-  padding-right: 2em;
-  color: var(--neutral-500);
-
 }
 
 .form-label {
@@ -438,8 +457,8 @@ h3 {
     font-size 100ms ease-in;
 }
 
-.form-input:focus ~ .form-label,
-.form-input:not(:placeholder-shown).form-input:not(:focus) ~.form-label {
+.form-input:focus~.form-label,
+.form-input:not(:placeholder-shown).form-input:not(:focus)~.form-label {
   top: -0.7em;
   left: .7rem;
   font-size: 0.7em;
@@ -459,13 +478,13 @@ h3 {
   margin: 0;
 }
 
-.form-time ~.form-label {
+.form-time~.form-label {
   top: -0.7em;
   left: .7rem;
   font-size: 0.7em;
 }
 
-/* scrollbar */
+/* ============================== scrollbar =============================== */
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -495,4 +514,41 @@ button {
   border-radius: 1em;
   color: white;
   margin-right: 2rem;
+}
+
+.close {
+  position: relative;
+}
+
+.close_btn {
+  all: unset;
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  top: 0;
+  right: 0;
+}
+
+.close_btn::after {
+  position: absolute;
+  content: '';
+  background: var(--neutral-400);
+  width: 1em;
+  height: 2px;
+  border-radius: 1px;
+  transform: rotate(-45deg);
+  top: 1em;
+  right: 0.5em;
+}
+
+.close_btn::before {
+  position: absolute;
+  content: '';
+  background: var(--neutral-400);
+  width: 1em;
+  height: 2px;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  top: 1em;
+  right: 0.5em;
 }

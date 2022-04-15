@@ -154,21 +154,62 @@ const postUpdate = async (req, res) => {
     estado
   } = req.body;
   const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json(errors.array())
+  await pool.query(`
+    INSERT INTO 
+      hospital.estado (
+        id,
+        estado)
+      VALUES (
+        '${ID}',
+        '${estado}')`
+    )
+  console.log(`Caso ${ID} Actualizado`);
+  res.send('ok')
+}
 
-  if (req.session.role == 'Admin' || req.session.role == 'Ayudante') {
+const postSignup = async (req, res) => {
+  const errors = validationResult(req);
+  const {
+    name,
+    last_name,
+    cedula,
+    user,
+    rol,
+    password
+  } = req.body;
+
+  if (req.session.role == 'Admin') {
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
-    await pool.query(`
+
+    const response = await pool.query(`
       INSERT INTO 
-        hospital.estado (
-          id,
-          estado)
+        hospital.userdata (
+          cedula,
+          nombre,
+          apellido,
+          rol,
+          username,
+          pass)
         VALUES (
-          '${ID}',
-          '${estado}')`
+          '${cedula}',
+          '${name}',
+          '${last_name}',
+          '${rol}',
+          '${user}',
+          crypt('${password}', gen_salt(\'bf\')) )`
       )
-    console.log(`Caso ${ID} Actualizado`);
-    res.send('ok')
-  }else res.status(401).redirect('/')
+
+    console.log(`Usuario ${user} creado`);
+    if (response) res.send(response)
+    else res.status(400).render('sesion/signup', {
+      errors: [{
+        "msg": "Ha ocurrido un error inesperado"
+      }]
+    });
+
+  } else res.status(401).send('no tiene permisos')
+
 }
 
 module.exports = {
@@ -177,5 +218,6 @@ module.exports = {
   getCaseByName,
   getCaseByCedula,
   postRegistro,
-  postUpdate
+  postUpdate,
+  postSignup
 }

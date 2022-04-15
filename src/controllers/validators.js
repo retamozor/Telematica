@@ -88,12 +88,9 @@ const validate_estado = body('estado').custom(async (estado, { req }) => {
       AND e1.id=c.id 
       AND c.examen=r.id 
       AND c.id='${req.body.ID}'
-      AND NOT EXISTS (
-          SELECT *
-          FROM hospital.estado e2
-          WHERE e2.creado > e1.creado
-      )`
+      ORDER BY E1.CREADO DESC limit 1`
   )
+  if (lastEstado.rowCount == 0) return true
   if (lastEstado.rows[0].estado == 'Muerte') throw new Error('El paciente ya murió')
 
   return true
